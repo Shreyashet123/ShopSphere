@@ -13,13 +13,13 @@ const adminRoutes=require('./routes/adminroutes');
 const productAdminRoutes=require('./routes/productadminroutes');
 const OrderAdminRoutes=require('./routes/AdminOrderRoutes');
 const reviewRoutes=require('./routes/adminreviewroutes');
-const { default: Stripe } = require('stripe');
+
 
 
 const app=express();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173','https://shop-sphere-lsc1.vercel.app'],
     credentials: true // Optional: allow sending cookies or Authorization headers
   }));
 
@@ -42,7 +42,7 @@ app.use('/api/admin/users',adminRoutes);
 app.use('/api/admin/products',productAdminRoutes);
 app.use('/api/admin/orders',OrderAdminRoutes);
 app.use('/api/admin/reviews',reviewRoutes)
-app.use('/api/payment', Stripe);
+
 app.listen(PORT,()=>{
     console.log(`server is running on http://localhost:${PORT}`);
 })
